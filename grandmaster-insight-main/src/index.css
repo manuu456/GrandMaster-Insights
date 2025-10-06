@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Chess.AI Design System - Professional chess analysis platform
+All colors MUST be HSL for consistency and theming.
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Chess themed */
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Chess Green - Primary brand color */
+    --primary: 142 69% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light backgrounds */
+    --secondary: 120 20% 97%;
+    --secondary-foreground: 220 13% 18%;
+
+    --muted: 120 10% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 142 30% 92%;
+    --accent-foreground: 220 13% 18%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 13% 91%;
+    --input: 120 13% 91%;
+    --ring: 142 69% 58%;
+
+    --radius: 0.5rem;
+
+    /* Chess.AI Custom Design Tokens */
+    --chess-board-light: 240 9% 89%;
+    --chess-board-dark: 142 69% 58%;
+    --chess-piece-black: 220 13% 18%;
+    --chess-piece-white: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 69% 58%), hsl(142 69% 48%));
+    --gradient-hero: linear-gradient(135deg, hsl(142 69% 58% / 0.1), hsl(142 30% 92% / 0.3));
+    --gradient-success: linear-gradient(135deg, hsl(142 69% 58%), hsl(160 60% 45%));
+    
+    /* Shadows */
+    --shadow-chess: 0 4px 20px hsl(142 69% 58% / 0.15);
+    --shadow-elegant: 0 10px 30px -10px hsl(220 13% 18% / 0.1);
+    
+    /* Animation variables */
+    --transition-chess: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 13% 18%;
+    --sidebar-primary: 142 69% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 30% 92%;
+    --sidebar-accent-foreground: 220 13% 18%;
+    --sidebar-border: 120 13% 91%;
+    --sidebar-ring: 142 69% 58%;
+  }
+
+  .dark {
+    /* Dark mode - Chess themed */
+    --background: 220 13% 9%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 142 69% 58%;
+    --primary-foreground: 220 13% 9%;
+
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 220 13% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 142 69% 58%;
+    
+    /* Dark mode chess tokens */
+    --chess-board-light: 220 13% 15%;
+    --chess-board-dark: 142 69% 58%;
+    --gradient-hero: linear-gradient(135deg, hsl(142 69% 58% / 0.2), hsl(220 13% 15% / 0.8));
+    --shadow-chess: 0 4px 20px hsl(142 69% 58% / 0.3);
+
+    --sidebar-background: 220 13% 9%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 142 69% 58%;
+    --sidebar-primary-foreground: 220 13% 9%;
+    --sidebar-accent: 220 13% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 13% 20%;
+    --sidebar-ring: 142 69% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Chess.AI Utility Classes */
+@layer components {
+  /* Chess board pattern utilities */
+  .chess-pattern {
+    background-image: 
+      linear-gradient(45deg, hsl(var(--chess-board-light)) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--chess-board-light)) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--chess-board-light)) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--chess-board-light)) 75%);
+    background-size: 30px 30px;
+    background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+  }
+
+  /* Gradient utilities */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+
+  /* Shadow utilities */
+  .shadow-chess {
+    box-shadow: var(--shadow-chess);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Interactive elements */
+  .chess-hover {
+    @apply transition-all duration-300 hover:shadow-chess hover:scale-105;
+  }
+  
+  .chess-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 py-3 font-medium transition-all duration-300 hover:shadow-chess hover:scale-105;
+  }
+  
+  .chess-card {
+    @apply bg-card border border-border rounded-lg shadow-elegant hover:shadow-chess transition-all duration-300;
+  }
+}
